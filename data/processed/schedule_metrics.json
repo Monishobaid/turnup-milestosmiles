@@ -1,0 +1,69 @@
+{
+  "evaluation": "Held-out complete 48-slot historical days; actual system curtailment is used only by the oracle and for scoring.",
+  "days_evaluated": 84,
+  "days_excluded_incomplete": 17,
+  "fixed_peak_cap_mw": 19.6,
+  "strategies": {
+    "fixed": {
+      "days": 84,
+      "mean_curtailment_overlap_mwh": 9.4939,
+      "total_curtailment_overlap_mwh": 797.488,
+      "incremental_overlap_vs_fixed_mwh": 0.0,
+      "mean_energy_cost_eur": 4214.00994,
+      "mean_peak_mw": 19.6,
+      "max_peak_mw": 19.6,
+      "total_scheduled_energy_mwh": 3192.0,
+      "total_unmet_energy_mwh": 0.0,
+      "deadline_misses": 0,
+      "capacity_violations": 0,
+      "mean_schedule_movement_mwh": 0.0
+    },
+    "oracle": {
+      "days": 84,
+      "mean_curtailment_overlap_mwh": 14.17535,
+      "total_curtailment_overlap_mwh": 1190.729,
+      "incremental_overlap_vs_fixed_mwh": 393.241,
+      "mean_energy_cost_eur": 4010.66924,
+      "mean_peak_mw": 19.6,
+      "max_peak_mw": 19.6,
+      "total_scheduled_energy_mwh": 3192.0,
+      "total_unmet_energy_mwh": 0.0,
+      "deadline_misses": 0,
+      "capacity_violations": 0,
+      "mean_schedule_movement_mwh": 9.49821
+    },
+    "price_only": {
+      "days": 84,
+      "mean_curtailment_overlap_mwh": 12.09025,
+      "total_curtailment_overlap_mwh": 1015.581,
+      "incremental_overlap_vs_fixed_mwh": 218.093,
+      "mean_energy_cost_eur": 3667.50406,
+      "mean_peak_mw": 19.6,
+      "max_peak_mw": 19.6,
+      "total_scheduled_energy_mwh": 3192.0,
+      "total_unmet_energy_mwh": 0.0,
+      "deadline_misses": 0,
+      "capacity_violations": 0,
+      "mean_schedule_movement_mwh": 20.99286
+    },
+    "turnup": {
+      "days": 84,
+      "mean_curtailment_overlap_mwh": 12.01888,
+      "total_curtailment_overlap_mwh": 1009.586,
+      "incremental_overlap_vs_fixed_mwh": 212.098,
+      "mean_energy_cost_eur": 3853.54374,
+      "mean_peak_mw": 19.6,
+      "max_peak_mw": 19.6,
+      "total_scheduled_energy_mwh": 3192.0,
+      "total_unmet_energy_mwh": 0.0,
+      "deadline_misses": 0,
+      "capacity_violations": 0,
+      "mean_schedule_movement_mwh": 23.82262
+    }
+  },
+  "guardrails": {
+    "all_schedules_same_energy_target": true,
+    "deadline_misses_must_be_zero": true,
+    "capacity_violations_must_be_zero": true
+  }
+}

@@ -1,0 +1,6 @@
+job_id,job_name,energy_mwh,earliest_start_local,deadline_local,max_power_mw,job_type,priority
+fine-tuning,AI model fine-tuning,12,00:00,08:00,6,interruptible,1
+embeddings,Embedding generation,5,00:00,12:00,4,interruptible,2
+inference,Batch inference,8,08:00,18:00,5,interruptible,3
+backup,Database backup,3,01:00,06:00,2,continuous,4
+video,Video processing,10,10:00,23:00,4,interruptible,5

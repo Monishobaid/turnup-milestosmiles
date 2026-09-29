@@ -1,0 +1,38 @@
+{
+  "method": "chronological monthly windows; no shuffling; predictions are scored only against later observed labels",
+  "windows": [
+    {
+      "window": "2026-03",
+      "rows": 438,
+      "event_rate": 0.48174,
+      "pr_auc": 0.93943,
+      "brier": 0.10489,
+      "magnitude_mae_mwh": 86.55331
+    },
+    {
+      "window": "2026-04",
+      "rows": 1428,
+      "event_rate": 0.39006,
+      "pr_auc": 0.8168,
+      "brier": 0.13233,
+      "magnitude_mae_mwh": 75.1307
+    },
+    {
+      "window": "2026-05",
+      "rows": 1482,
+      "event_rate": 0.11471,
+      "pr_auc": 0.35458,
+      "brier": 0.11186,
+      "magnitude_mae_mwh": 25.14203
+    },
+    {
+      "window": "2026-06",
+      "rows": 1430,
+      "event_rate": 0.22028,
+      "pr_auc": 0.7716,
+      "brier": 0.11155,
+      "magnitude_mae_mwh": 39.41754
+    }
+  ],
+  "rows": 4778
+}

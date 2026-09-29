@@ -1,0 +1,120 @@
+{
+  "team": "MilestoSmiles",
+  "product": "TURNUP",
+  "generated_at_utc": "2026-09-28T14:11:30.976004+00:00",
+  "sources": {
+    "hack_the_climate": "generation-load-prices.zip (IE_generation.csv, IE_load.csv, IE_SEM_prices.csv)",
+    "eirgrid": "System and Renewable Data Reports / DD Half-Hourly Data; Wind + IE rows"
+  },
+  "hack_the_climate": {
+    "generation": {
+      "rows": 842714,
+      "invalid_timestamps": 0,
+      "duplicate_timestamps": 740332,
+      "min_timestamp": "2020-01-01T00:00:00",
+      "max_timestamp": "2026-06-30T23:30:00",
+      "gap_counts": {
+        "0 days 00:00:00": 740332,
+        "0 days 00:30:00": 101816,
+        "0 days 01:30:00": 435,
+        "0 days 02:30:00": 64,
+        "0 days 03:30:00": 20,
+        "0 days 04:30:00": 11,
+        "0 days 05:30:00": 5,
+        "0 days 07:30:00": 3,
+        "0 days 23:30:00": 3,
+        "0 days 13:30:00": 2
+      }
+    },
+    "load": {
+      "rows": 86728,
+      "invalid_timestamps": 0,
+      "duplicate_timestamps": 0,
+      "min_timestamp": "2020-01-01T00:00:00",
+      "max_timestamp": "2026-06-30T23:30:00",
+      "gap_counts": {
+        "0 days 00:30:00": 86053,
+        "0 days 01:30:00": 532,
+        "0 days 02:30:00": 63,
+        "0 days 03:30:00": 28,
+        "0 days 23:30:00": 6,
+        "0 days 04:30:00": 6,
+        "0 days 07:30:00": 3,
+        "0 days 06:30:00": 3,
+        "0 days 11:30:00": 2,
+        "0 days 08:30:00": 2
+      }
+    },
+    "price": {
+      "rows": 54571,
+      "invalid_timestamps": 0,
+      "duplicate_timestamps": 0,
+      "min_timestamp": "2020-01-01T00:00:00",
+      "max_timestamp": "2026-06-30T23:00:00",
+      "gap_counts": {
+        "0 days 01:00:00": 54557,
+        "1 days 01:00:00": 7,
+        "1 days 02:00:00": 4,
+        "75 days 02:00:00": 1,
+        "13 days 01:00:00": 1
+      }
+    },
+    "generation_types": [
+      "Fossil Gas",
+      "Fossil Hard coal",
+      "Fossil Oil",
+      "Fossil Peat",
+      "Hydro Pumped Storage",
+      "Hydro Run-of-river and pondage",
+      "Hydro Run-of-river and poundage",
+      "Other",
+      "Solar",
+      "Wind Onshore"
+    ]
+  },
+  "eirgrid": {
+    "workbooks": [
+      "dd-hh-2025.xlsx",
+      "dd-hh-2026.xlsx"
+    ],
+    "rows_after_wind_ie_filter": 29182,
+    "duplicate_timestamps_after_filter": 87546,
+    "min_timestamp_utc": "2025-01-01T00:00:00+00:00",
+    "max_timestamp_utc": "2026-08-31T22:30:00+00:00",
+    "curtailment_mwh": 1067469.6060000001,
+    "constraint_mwh": 1508697.743,
+    "dispatch_down_mwh": 2576160.997
+  },
+  "join": {
+    "canonical_rows": 107998,
+    "labelled_rows": 24270,
+    "label_coverage_pct": 22.47,
+    "canonical_min_timestamp_utc": "2020-01-01T00:00:00Z",
+    "canonical_max_timestamp_utc": "2026-06-30T23:30:00Z",
+    "labelled_min_timestamp_utc": "2025-01-01T00:00:00Z",
+    "labelled_max_timestamp_utc": "2026-06-30T23:30:00Z",
+    "nulls": {
+      "load_actual_mw": 21270,
+      "load_forecast_mw": 107998,
+      "wind_actual_mw": 5644,
+      "wind_forecast_mw": 107998,
+      "solar_actual_mw": 84140,
+      "solar_forecast_mw": 107998,
+      "price_eur_per_mwh": 4277,
+      "system_curtailment_mwh": 83728,
+      "local_constraint_mwh": 83728,
+      "total_dispatch_down_mwh": 83728,
+      "other_dispatch_down_mwh": 83728,
+      "label_source": 83728,
+      "available_wind_mwh": 83728,
+      "actual_output_wind_mwh": 83728,
+      "gmt_offset_hours": 83728
+    }
+  },
+  "interpretation": {
+    "system_curtailment_mwh": "EirGrid CURTAILMENTS_MWH; kept separate from local constraints.",
+    "local_constraint_mwh": "EirGrid CONSTRAINTS_MWH; not treated as system curtailment.",
+    "total_dispatch_down_mwh": "EirGrid DD_MWH; source total, not recomputed from the two components.",
+    "forecast_leakage_guard": "Forecast columns are intentionally empty; actuals/labels are not presented as day-ahead features."
+  }
+}

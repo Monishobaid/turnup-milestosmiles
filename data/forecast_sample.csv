@@ -1,0 +1,4 @@
+timestamp_utc,load_forecast_mw,wind_forecast_mw,solar_forecast_mw,price_forecast_eur_per_mwh,constraint_region,grid_node
+2026-07-01T00:00:00Z,3400,1800,0,48,IE_SYSTEM_CURTAILMENT,DEMO_NODE
+2026-07-01T00:30:00Z,3380,1840,0,46,IE_SYSTEM_CURTAILMENT,DEMO_NODE
+2026-07-01T01:00:00Z,3360,1880,0,45,IE_SYSTEM_CURTAILMENT,DEMO_NODE

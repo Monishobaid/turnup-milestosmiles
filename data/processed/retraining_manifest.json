@@ -1,0 +1,21 @@
+{
+  "completed_at_utc": "2026-09-28T15:28:24.388516+00:00",
+  "data": "data/processed/turnup_labelled_30min.csv",
+  "metrics": "data/processed/model_metrics.json",
+  "metadata": "data/processed/feature_metadata.json",
+  "command": [
+    "/Users/monishobaid/Documents/Codex/2026-09-28/x20/work/turnup-venv/bin/python",
+    "scripts/train_turnup_model.py",
+    "--data",
+    "data/processed/turnup_labelled_30min.csv",
+    "--output",
+    "data/processed"
+  ],
+  "stdout": [
+    "rows=23888 train=15527 validation=3583 test=4778",
+    "model_pr_auc=0.78523 heuristic_pr_auc=0.70948",
+    "model_top_decile_recall=0.33998 heuristic_top_decile_recall=0.30008",
+    "wrote data/processed/model_metrics.json and data/processed/predictions_test.csv"
+  ],
+  "status": "completed"
+}

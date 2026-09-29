@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071b1c" />
+    <meta name="description" content="TURNUP — curtailment-aware scheduling by MilestoSmiles." />
+    <title>TURNUP · MilestoSmiles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="TURNUP home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>TURN<span class="brand-up">UP</span></span>
+        </a>
+        <div class="topbar-meta">
+          <span class="team-pill"><span class="status-dot"></span> MilestoSmiles</span>
+          <span class="demo-label">DEMO MODE</span>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero section-wrap">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> Flexible demand, timed for the grid</p>
+            <h1>Turn renewable<br /><em>surplus</em> into momentum.</h1>
+            <p class="hero-lede">TURNUP predicts system-wide curtailment opportunities, then places work that already needs to happen into the best available half-hour windows.</p>
+            <div class="hero-actions">
+              <button class="button button-primary" id="runSchedule">Run schedule <span aria-hidden="true">↗</span></button>
+              <button class="button button-ghost" id="resetDemo">Reset demo</button>
+            </div>
+            <p class="trust-note"><span class="lock-icon">◈</span> Deadlines, site capacity and total workload energy stay fixed.</p>
+          </div>
+          <div class="hero-visual" aria-label="Illustration of renewable energy flowing into flexible workloads">
+            <div class="orb orb-large"></div>
+            <div class="orb orb-small"></div>
+            <div class="flow-card">
+              <span class="flow-card-label">GRID SIGNAL</span>
+              <strong>High renewable<br />availability</strong>
+              <span class="flow-card-arrow">↓</span>
+            </div>
+            <div class="flow-line line-one"></div>
+            <div class="flow-line line-two"></div>
+            <div class="workload-card">
+              <span class="workload-icon">✦</span>
+              <span><small>FLEXIBLE QUEUE</small><strong>5 jobs ready</strong></span>
+              <span class="queue-badge">LIVE</span>
+            </div>
+            <div class="hero-grid-lines"></div>
+          </div>
+        </section>
+
+        <section class="section-wrap dashboard-section" aria-labelledby="dashboard-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line"></span> Scheduling horizon</p>
+              <h2 id="dashboard-title">Tomorrow, made more flexible.</h2>
+            </div>
+            <div class="horizon-controls">
+              <label for="horizonSelect">Horizon</label>
+              <select id="horizonSelect" aria-label="Scheduling horizon">
+                <option value="24">Next 24 hours</option>
+                <option value="12">Next 12 hours</option>
+                <option value="48">Next 48 hours</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="kpi-grid" id="kpiGrid">
+            <article class="kpi-card kpi-highlight">
+              <div class="kpi-topline"><span class="kpi-icon">↗</span><span>Potentially absorbable</span></div>
+              <strong id="kpiEnergy">—</strong>
+              <span class="kpi-caption">renewable energy under simulation</span>
+              <div class="kpi-spark spark-green" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-topline"><span class="kpi-icon icon-muted">⌁</span><span>Site peak</span></div>
+              <strong id="kpiPeak">—</strong>
+              <span class="kpi-caption" id="kpiPeakCaption">limit —</span>
+              <div class="capacity-bar"><span id="capacityFill"></span></div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-topline"><span class="kpi-icon icon-muted">◷</span><span>Jobs protected</span></div>
+              <strong id="kpiJobs">—</strong>
+              <span class="kpi-caption">deadlines preserved</span>
+              <div class="job-dots" id="jobDots" aria-hidden="true"></div>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-topline"><span class="kpi-icon icon-muted">◎</span><span>Schedule confidence</span></div>
+              <strong id="kpiConfidence">—</strong>
+              <span class="kpi-caption">forecast + constraint fit</span>
+              <div class="confidence-ring" id="confidenceRing"><span>—</span></div>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel chart-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="panel-kicker">OPPORTUNITY MAP</span>
+                  <h3>When to turn up</h3>
+                </div>
+                <div class="legend"><span><i class="legend-dot renewable"></i>Renewables</span><span><i class="legend-dot signal"></i>Curtailment signal</span></div>
+              </div>
+              <div class="chart-wrap"><canvas id="opportunityChart" role="img" aria-label="Renewable generation and curtailment opportunity across the scheduling horizon"></canvas><div class="chart-tooltip" id="chartTooltip"></div></div>
+              <div class="axis-labels" id="axisLabels"></div>
+              <div class="chart-footnote"><span class="live-pulse"></span><span id="chartSummary">The scheduler is looking for the cleanest windows.</span><span class="mono">30 MIN INTERVALS</span></div>
+            </article>
+
+            <article class="panel explain-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="panel-kicker">DECISION TRACE</span>
+                  <h3>Why these slots?</h3>
+                </div>
+                <span class="trace-count" id="traceCount">0 / 5</span>
+              </div>
+              <div id="explanationList" class="explanation-list"></div>
+              <div class="explain-footer"><span class="ai-badge">AI</span><span>Prediction suggests; deterministic rules decide.</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-wrap workload-section" aria-labelledby="workload-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line"></span> Existing demand, better timed</p>
+              <h2 id="workload-title">The queue stays intact.</h2>
+            </div>
+            <div class="section-aside"><span class="aside-dot"></span> 5 flexible jobs · 38 MWh total</div>
+          </div>
+          <div class="workload-table-wrap">
+            <table class="workload-table">
+              <thead><tr><th>Workload</th><th>Energy</th><th>Window</th><th>Max power</th><th>Status</th><th>Scheduled slots</th></tr></thead>
+              <tbody id="workloadRows"></tbody>
+            </table>
+          </div>
+          <p class="table-note"><span class="lock-icon">◈</span> The queue is synthetic for the demo. It represents work that already has to run — TURNUP changes when, not how much.</p>
+        </section>
+
+        <section class="section-wrap method-section" aria-labelledby="method-title">
+          <div class="method-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> Built for credible decisions</p>
+            <h2 id="method-title">A signal you can audit.<br /><em>A schedule you can trust.</em></h2>
+            <p>TURNUP keeps the AI layer focused on the forecast. A deterministic optimiser then protects the constraints that matter to an operator: site baseline, import capacity, deadlines and job energy.</p>
+            <div class="method-tags"><span>System-wide curtailment</span><span>Time-safe features</span><span>Auditable impact</span></div>
+          </div>
+          <div class="method-steps">
+            <div class="method-step"><span class="step-number">01</span><div><strong>Forecast</strong><p>Estimate the probability and magnitude of system-wide curtailment for each 30-minute interval.</p></div></div>
+            <div class="method-step"><span class="step-number">02</span><div><strong>Prioritise</strong><p>Score windows by renewable availability, residual load, price and forecast confidence.</p></div></div>
+            <div class="method-step"><span class="step-number">03</span><div><strong>Schedule</strong><p>Place flexible workloads into the best windows while preserving energy, capacity and deadlines.</p></div></div>
+          </div>
+        </section>
+
+        <section class="section-wrap data-section" aria-labelledby="data-title">
+          <div class="data-card">
+            <div><span class="panel-kicker">READY FOR THE HACKATHON DATA</span><h2 id="data-title">Bring your 30-minute CSV.</h2><p>Use the same interface when the team has audited the generation, load, price and EirGrid labels. The demo keeps running if no file is selected.</p></div>
+            <div class="data-actions"><button class="button button-ghost" id="loadAudited" type="button">Load audited EirGrid join ↗</button><label class="file-drop" for="csvInput"><input id="csvInput" type="file" accept=".csv,text/csv" /><span class="upload-icon">↑</span><span><strong>Drop canonical CSV</strong><small>timestamp + grid signals</small></span></label></div>
+          </div>
+          <p class="import-status" id="importStatus" role="status">Demo data is active. No external data has been uploaded.</p>
+        </section>
+      </main>
+
+      <footer class="footer section-wrap"><span>TURNUP / MilestoSmiles</span><span>Hack the Climate · 2026</span><span class="footer-note">Potential impact, not a guarantee.</span></footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

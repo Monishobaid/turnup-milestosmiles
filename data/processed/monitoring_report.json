@@ -1,0 +1,25 @@
+{
+  "rows": 4778,
+  "time_range": {
+    "min": "2026-03-22T13:00:00+00:00",
+    "max": "2026-06-30T23:30:00+00:00"
+  },
+  "quality": {
+    "pr_auc": 0.78523,
+    "brier": 0.11725,
+    "magnitude_mae_mwh": 49.98421,
+    "observed_event_rate": 0.26224
+  },
+  "drift": {
+    "model_event_probability": {
+      "mean": 0.35251,
+      "std": 0.29057,
+      "p95": 0.9208
+    },
+    "model_expected_curtailment_mwh": {
+      "mean": 39.7079,
+      "std": 71.59579,
+      "p95": 179.54653
+    }
+  }
+}

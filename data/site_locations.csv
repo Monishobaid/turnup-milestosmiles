@@ -1,0 +1,2 @@
+site_id,site_location,constraint_region,grid_node,latitude,longitude,location_status
+milestosmiles-demo,Ireland,IE_SYSTEM_CURTAILMENT,DEMO_NODE,53.3498,-6.2603,placeholder_for_team_site
